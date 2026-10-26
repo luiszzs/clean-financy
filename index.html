@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Clean-Financy | Finanças organizadas sem complicação</title>
-  <meta name="description" content="Organize entradas, saídas e o saldo do seu pequeno negócio com a simplicidade da Clean-Financy.">
-  <meta property="og:title" content="Clean-Financy | Finanças organizadas sem complicação">
-  <meta property="og:description" content="Gestão financeira simples para pequenos comércios e microempresas.">
+  <title>Clean-Financy | Gestão financeira simples</title>
+  <meta name="description" content="Conheça a Clean-Financy, compare planos, avalie a jornada AARRR e encontre nossos canais de contato.">
+  <meta property="og:title" content="Clean-Financy | Gestão financeira simples">
+  <meta property="og:description" content="Uma forma simples de acompanhar as finanças do seu pequeno negócio.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,27 +15,28 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/main.js" defer></script>
+  <script src="js/avaliacao.js" defer></script>
 </head>
-<body data-page="inicio">
+<body data-page="unica-pagina">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Clean-Financy, início"><img src="assets/logo.svg" alt="Clean-Financy"></a>
+      <a class="brand" href="#inicio" aria-label="Clean-Financy, início"><img src="assets/logo.svg" alt="Clean-Financy"></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="menu-icon" aria-hidden="true"></span><span class="sr-only">Abrir menu</span></button>
       <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
-        <a href="index.html" aria-current="page">Início</a><a href="precos.html">Preços</a><a href="sobre.html">Sobre</a><a href="avaliacao.html">Avaliação</a><a href="contato.html">Contato</a>
-        <a class="button button-small" href="precos.html">Começar grátis</a>
+        <a href="#inicio" aria-current="page">Início</a><a href="#precos">Preços</a><a href="#sobre">Sobre</a><a href="#avaliacao">Avaliação</a><a href="#contato">Contato</a>
+        <a class="button button-small" href="#precos">Começar grátis</a>
       </nav>
     </div>
   </header>
   <main id="conteudo">
-    <section class="hero section-space">
+    <section class="hero section-space" id="inicio">
       <div class="container hero-grid">
         <div class="hero-copy">
           <span class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Feito para pequenos comércios</span>
           <h1>As finanças do seu negócio, <span>organizadas sem complicação</span></h1>
           <p class="lead">O Clean-Financy registra suas entradas e saídas, mostra o saldo do negócio e organiza o histórico — tudo em um sistema simples que qualquer pessoa usa em minutos.</p>
-          <div class="button-row"><a class="button" href="precos.html">Começar grátis</a><a class="button button-secondary" href="precos.html">Ver planos</a></div>
+          <div class="button-row"><a class="button" href="#precos">Começar grátis</a><a class="button button-secondary" href="#precos">Ver planos</a></div>
           <p class="hero-note">Grátis para começar <span aria-hidden="true">•</span> Sem instalação <span aria-hidden="true">•</span> Funciona no celular</p>
         </div>
         <div class="dashboard-wrap" aria-label="Exemplo ilustrativo de painel financeiro">
@@ -72,7 +73,7 @@
           <article class="feature-card"><span class="feature-icon" aria-hidden="true">▤</span><h3>Histórico organizado</h3><p>Encontre as movimentações e acompanhe o caminho do dinheiro.</p></article>
           <article class="feature-card"><span class="feature-icon" aria-hidden="true">⌁</span><h3>Relatórios e lembretes</h3><p>Tenha mais clareza com relatórios simples e lembretes financeiros.</p></article>
         </div>
-        <div class="center-action"><a class="button" href="precos.html">Começar grátis agora</a></div>
+        <div class="center-action"><a class="button" href="#precos">Começar grátis agora</a></div>
       </div>
     </section>
     <section class="section-space section-muted">
@@ -81,8 +82,71 @@
         <div class="three-grid testimonials"><article><span aria-hidden="true">“</span><h3>Depoimento em breve</h3><p>Este espaço será preenchido quando houver um relato real de cliente.</p></article><article><span aria-hidden="true">“</span><h3>Depoimento em breve</h3><p>Não publicamos avaliações ou histórias sem autorização e contexto.</p></article><article><span aria-hidden="true">“</span><h3>Depoimento em breve</h3><p>Queremos compartilhar experiências verdadeiras, no momento certo.</p></article></div>
       </div>
     </section>
-    <section class="section-space"><div class="container cta-band"><div><span class="eyebrow eyebrow-light">Um passo de cada vez</span><h2>Coloque as contas do seu negócio em ordem hoje</h2><p>Comece no plano gratuito e mude para o Pro quando precisar de mais recursos.</p></div><div class="button-row"><a class="button button-white" href="precos.html">Começar grátis</a><a class="button button-outline-light" href="precos.html">Comparar planos</a></div></div></section>
+    <section class="page-hero section-space" id="precos"><div class="container narrow center"><span class="eyebrow">Planos sem surpresa</span><h2>Preços simples, como tudo por aqui</h2><p class="lead">Comece pelo essencial e escolha o plano que combina com o momento do seu negócio.</p></div></section>
+    <section class="section-space pricing-section"><div class="container"><div class="pricing-grid">
+      <article class="price-card"><span class="plan-label">BÁSICO</span><h3>Para começar</h3><p class="price">Grátis</p><p class="muted">O essencial para organizar o dia a dia.</p><ul class="check-list"><li>Registro de entradas e saídas</li><li>Resumo simples do saldo</li></ul><a class="button button-secondary full-width" href="#contato">Começar grátis</a></article>
+      <article class="price-card price-card-featured"><span class="popular-label">Mais recursos</span><span class="plan-label">PRO</span><h3>Para ir além</h3><p class="price">R$ 19,90<small>/mês</small></p><p class="muted">Inclui os recursos do Básico e mais:</p><ul class="check-list"><li>Registro de entradas e saídas</li><li>Resumo simples do saldo</li><li>Relatórios completos</li><li>Histórico estendido</li><li>Lembretes financeiros</li></ul><a class="button full-width" href="#contato">Assinar agora</a></article>
+    </div></div></section>
+    <section class="section-space section-muted"><div class="container"><div class="section-heading"><span class="eyebrow">Compare com clareza</span><h2>O que está incluído</h2></div><div class="comparison-wrap"><table class="comparison-table"><thead><tr><th scope="col">Recurso</th><th scope="col">Básico</th><th scope="col">Pro</th></tr></thead><tbody><tr><th scope="row">Registro de entradas e saídas</th><td>Incluído</td><td>Incluído</td></tr><tr><th scope="row">Resumo simples do saldo</th><td>Incluído</td><td>Incluído</td></tr><tr><th scope="row">Relatórios completos</th><td>—</td><td>Incluído</td></tr><tr><th scope="row">Histórico estendido</th><td>—</td><td>Incluído</td></tr><tr><th scope="row">Lembretes financeiros</th><td>—</td><td>Incluído</td></tr></tbody></table></div></div></section>
+
+    <section class="page-hero section-space" id="sobre"><div class="container narrow center"><span class="eyebrow">Sobre a Clean-Financy</span><h2>Achamos que controlar as finanças deveria ser fácil</h2><p class="lead">A Clean-Financy é um serviço de gestão financeira por assinatura pensado para pequenos comércios, comerciantes autônomos e microempresas.</p></div></section>
+    <section class="section-space section-muted"><div class="container story-grid"><div><span class="eyebrow">O desafio do dia a dia</span><h2>Caderno, planilha ou memória não precisam ser o único caminho</h2></div><div><p>Quem toca um pequeno negócio já tem bastante coisa para resolver. Anotar cada movimento em lugares diferentes ou tentar lembrar de tudo pode deixar as contas confusas e consumir tempo.</p><p>Nosso propósito é facilitar o acompanhamento financeiro com uma experiência direta: registrar entradas e saídas, consultar o saldo e encontrar o histórico sem precisar dominar ferramentas complicadas.</p><p>A simplicidade é acompanhada de automação para reduzir tarefas repetitivas — sem tirar de você a clareza sobre o que está acontecendo.</p></div></div></section>
+    <section class="section-space"><div class="container"><div class="section-heading"><span class="eyebrow">O que nos guia</span><h2>Feito para a realidade de quem empreende</h2></div><div class="three-grid"><article class="feature-card pillar-card"><span class="feature-icon" aria-hidden="true">01</span><h3>Simplicidade acima de tudo</h3><p>Uma experiência acessível, com informações fáceis de entender e usar.</p></article><article class="feature-card pillar-card"><span class="feature-icon" aria-hidden="true">02</span><h3>Feito para o pequeno negócio</h3><p>O essencial para acompanhar a rotina de comércios e microempresas.</p></article><article class="feature-card pillar-card"><span class="feature-icon" aria-hidden="true">03</span><h3>Segurança com clareza</h3><p>Explicamos o que o serviço oferece sem prometer garantias que não foram especificadas.</p></article></div></div></section>
+
+    <section class="page-hero section-space" id="avaliacao"><div class="container narrow center"><span class="eyebrow">Ferramenta de análise</span><h2>Avaliação da Clean-Financy</h2><p class="lead">Produto, crescimento e qualidade. Números que ajudam a escolher a próxima melhoria.</p></div></section>
+    <section class="section-space evaluation-section"><div class="container evaluation-container">
+      <div class="evaluation-notice" role="note"><strong>Métricas automáticas do funil</strong><span>Contagens e notas salvas neste navegador • Sem envio a servidor</span></div>
+      <section class="usage-funnel metric-card" aria-labelledby="usage-funnel-title">
+        <div class="metric-heading"><span class="metric-letter" aria-hidden="true">A</span><div><h2 id="usage-funnel-title">Funil AARRR interativo</h2><p>Teste a jornada da Clean-Financy. As contagens e notas agregadas ficam salvas somente neste navegador.</p></div></div>
+        <p class="usage-funnel-note">Cada abertura desta página conta como uma nova aquisição. Avance pelas etapas nesta jornada para registrar as conversões.</p>
+        <div class="usage-stage-grid" aria-live="polite">
+          <article class="usage-stage"><span>Aquisição</span><strong data-usage-count="acquisition">0</strong><small>Aberturas da página</small></article>
+          <article class="usage-stage"><span>Ativação</span><strong data-usage-count="activation">0</strong><small>Cliques em “Experimentar”</small></article>
+          <article class="usage-stage"><span>Retenção</span><strong data-usage-count="retention">0</strong><small>Cliques em “Quero usar de novo”</small></article>
+          <article class="usage-stage"><span>Receita</span><strong data-usage-count="revenue">0</strong><small>Cliques em “Eu pagaria por isso”</small></article>
+          <article class="usage-stage"><span>Recomendação</span><strong data-usage-count="recommendation">0</strong><small>Notas NPS 9 ou 10</small></article>
+        </div>
+        <div class="usage-conversions" aria-live="polite">
+          <div class="usage-conversion" data-usage-conversion="activation"><span>Aquisição → Ativação</span><strong data-usage-rate="activation">—</strong></div>
+          <div class="usage-conversion" data-usage-conversion="retention"><span>Ativação → Retenção</span><strong data-usage-rate="retention">—</strong></div>
+          <div class="usage-conversion" data-usage-conversion="revenue"><span>Retenção → Receita</span><strong data-usage-rate="revenue">—</strong></div>
+          <div class="usage-conversion" data-usage-conversion="recommendation"><span>Receita → Recomendação</span><strong data-usage-rate="recommendation">—</strong></div>
+        </div>
+        <p class="usage-drop" data-usage-drop aria-live="polite">A maior queda será destacada quando todas as etapas tiverem dados.</p>
+        <div class="usage-actions">
+          <button class="button" type="button" data-usage-action="activation">Experimentar</button>
+          <button class="button" type="button" data-usage-action="retention" disabled>Quero usar de novo</button>
+          <button class="button" type="button" data-usage-action="revenue" disabled>Eu pagaria por isso</button>
+          <div class="usage-rating"><label for="usage-nps">Recomendaria a Clean-Financy? Dê uma nota de 0 a 10</label><select id="usage-nps" aria-label="Nota de recomendação de 0 a 10"><option value="">Selecione</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select><button class="button button-secondary" type="button" data-usage-action="recommendation" disabled>Registrar nota NPS</button></div>
+        </div>
+        <p class="usage-status" data-usage-status role="status" aria-live="polite"></p>
+      </section>
+      <div class="evaluation-top"><div class="field field-period"><label for="period">Período avaliado</label><input id="period" data-field="period" data-label="Período avaliado" type="text" placeholder="Ex.: Outubro de 2026"></div></div>
+      <div class="tabs" role="tablist" aria-label="Categorias da avaliação"><button id="tab-product" class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="panel-product" tabindex="0">Produto</button><button id="tab-growth" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-growth" tabindex="-1">Crescimento</button><button id="tab-quality" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-quality" tabindex="-1">Qualidade</button></div>
+      <div class="tab-panel" id="panel-product" role="tabpanel" aria-labelledby="tab-product"><div class="metrics-grid">
+        <section class="metric-card"><div class="metric-heading"><span class="metric-letter">A</span><div><h2>NPS</h2><p>Calculado automaticamente a partir das notas registradas no funil AARRR.</p></div></div><div class="nps-breakdown" aria-live="polite"><span>Notas válidas: <strong data-nps-count>0</strong></span><span>Promotores (9–10): <strong data-nps-promoters>0</strong></span><span>Neutros (7–8): <strong data-nps-neutrals>0</strong></span><span>Detratores (0–6): <strong data-nps-detractors>0</strong></span></div><div class="metric-result"><span>NPS</span><strong data-result="nps">—</strong><p data-result="npsMeaning" aria-live="polite">Informe notas no funil AARRR para calcular.</p></div></section>
+        <section class="metric-card"><div class="metric-heading"><span class="metric-letter">B</span><div><h2>Retenção</h2><p>Calculada automaticamente: quem voltou ÷ quem experimentou.</p></div></div><div class="nps-breakdown"><span>Ativações: <strong data-product-count="activation">0</strong></span><span>Retornos: <strong data-product-count="retention">0</strong></span></div><div class="metric-result"><span>Retenção (Retenção → Ativação)</span><strong data-result="retention">—</strong><p>Se a retenção cair, investigar a experiência antes de buscar mais visitantes.</p></div></section>
+        <section class="metric-card"><div class="metric-heading"><span class="metric-letter">C</span><div><h2>Engajamento</h2><p>Etapas concluídas no funil por aquisição registrada.</p></div></div><div class="nps-breakdown"><span>Aquisições: <strong data-product-count="acquisition">0</strong></span><span>Etapas concluídas: <strong data-product-count="engagementActions">0</strong></span></div><div class="metric-result"><span>Etapas por aquisição</span><strong data-result="engagement">—</strong><p>Considera ativação, retorno, intenção de pagamento e recomendação.</p></div></section>
+      </div></div>
+      <div class="tab-panel" id="panel-growth" role="tabpanel" aria-labelledby="tab-growth" hidden><div class="metrics-grid">
+        <section class="metric-card"><div class="metric-heading"><span class="metric-letter">A</span><div><h2>Aquisições</h2><p>Variação diária baseada nas aberturas registradas automaticamente.</p></div></div><div class="funnel-results"><div class="metric-result"><span>Hoje</span><strong data-result="acquisitionsToday">0</strong></div><div class="metric-result"><span>Ontem</span><strong data-result="acquisitionsYesterday">0</strong></div></div><div class="metric-result"><span>Variação em relação a ontem</span><strong data-result="acquisitionGrowth">—</strong><p data-result="acquisitionGrowthNote" aria-live="polite">—</p></div></section>
+        <section class="metric-card"><div class="metric-heading"><span class="metric-letter">B</span><div><h2>Atividade acumulada</h2><p>Totais das etapas registradas desde o início do acompanhamento.</p></div></div><div class="nps-breakdown"><span>Aquisições: <strong data-growth-count="acquisition">0</strong></span><span>Ativações: <strong data-growth-count="activation">0</strong></span><span>Retornos: <strong data-growth-count="retention">0</strong></span><span>Intenção de pagamento: <strong data-growth-count="revenue">0</strong></span><span>Recomendações: <strong data-growth-count="recommendation">0</strong></span></div></section>
+      </div></div>
+      <div class="tab-panel" id="panel-quality" role="tabpanel" aria-labelledby="tab-quality" hidden><div class="metrics-grid">
+        <section class="metric-card metric-card-wide"><div class="metric-heading"><span class="metric-letter">A</span><div><h2>Conversões da jornada</h2><p>Indicadores automáticos da experiência em cada passagem do funil.</p></div></div><div class="funnel-results">
+          <div class="metric-result"><span>Aquisição → Ativação</span><strong data-quality-rate="activation">—</strong><p><span data-quality-count="activation">0</span> ativações em <span data-quality-count="acquisition">0</span> aquisições</p></div>
+          <div class="metric-result"><span>Ativação → Retenção</span><strong data-quality-rate="retention">—</strong><p><span data-quality-count="retention">0</span> retornos em <span data-quality-count="activation">0</span> ativações</p></div>
+          <div class="metric-result"><span>Retenção → Receita</span><strong data-quality-rate="revenue">—</strong><p><span data-quality-count="revenue">0</span> intenções em <span data-quality-count="retention">0</span> retornos</p></div>
+          <div class="metric-result"><span>Receita → Recomendação</span><strong data-quality-rate="recommendation">—</strong><p><span data-quality-count="recommendation">0</span> promotores em <span data-quality-count="revenue">0</span> intenções</p></div>
+        </div><p class="quality-warning">Essas conversões indicam atrito na jornada. Não representam medições de desempenho técnico, bugs ou qualidade de código.</p></section>
+      </div></div>
+      <section class="decision-card" aria-labelledby="decision-title"><div class="decision-heading"><span class="eyebrow">Bloco final</span><h2 id="decision-title">Dos números à decisão</h2><p>Primeiro os dados, depois a opinião. Escolha um problema e combine quando reavaliar.</p></div><div class="decision-fields"><div class="field"><label for="decisionProblem">Problema e evidência</label><textarea id="decisionProblem" data-field="decisionProblem" data-label="Problema e evidência" rows="3"></textarea></div><div class="field"><label for="decisionAction">Ação e o que fica para depois</label><textarea id="decisionAction" data-field="decisionAction" data-label="Ação e o que fica para depois" rows="3"></textarea></div><div class="field"><label for="decisionOwner">Responsável</label><input id="decisionOwner" data-field="decisionOwner" data-label="Responsável" type="text"></div><div class="field"><label for="reviewDate">Data de revisão</label><input id="reviewDate" data-field="reviewDate" data-label="Data de revisão" type="date"></div></div><div class="decision-footer"><p>O arquivo é gerado no seu dispositivo; os dados não são enviados a um servidor.</p><button class="button" type="button" id="download-evaluation">Baixar avaliação</button></div><p class="download-status" id="download-status" aria-live="polite"></p></section>
+    </div></section>
+
+    <section class="page-hero section-space" id="contato"><div class="container narrow center"><span class="eyebrow">Estamos por aqui</span><h2>Vamos conversar?</h2><p class="lead">Escolha o canal que preferir. Os contatos oficiais serão publicados assim que estiverem disponíveis.</p></div></section>
+    <section class="section-space contact-section"><div class="container contact-grid"><article class="contact-card" data-contact="whatsapp"><span class="contact-symbol" aria-hidden="true">W</span><h3>WhatsApp</h3><p data-contact-status>Contato em breve</p><span class="contact-status" data-contact-detail>Canal oficial ainda não informado</span><a class="button contact-link" data-contact-link hidden rel="noopener noreferrer">Conversar pelo WhatsApp</a></article><article class="contact-card" data-contact="instagram"><span class="contact-symbol instagram-symbol" aria-hidden="true">◎</span><h3>Instagram</h3><p data-contact-status>Contato em breve</p><span class="contact-status" data-contact-detail>Perfil oficial ainda não informado</span><a class="button contact-link" data-contact-link hidden rel="noopener noreferrer">Visitar Instagram</a></article></div></section>
+    <section class="section-space"><div class="container cta-band"><div><span class="eyebrow eyebrow-light">Um passo de cada vez</span><h2>Coloque as contas do seu negócio em ordem hoje</h2><p>Comece no plano gratuito e mude para o Pro quando precisar de mais recursos.</p></div><div class="button-row"><a class="button button-white" href="#precos">Começar grátis</a><a class="button button-outline-light" href="#precos">Comparar planos</a></div></div></section>
   </main>
-  <footer class="site-footer"><div class="container"><div class="footer-main"><div class="footer-brand"><a class="brand" href="index.html"><img src="assets/logo.svg" alt="Clean-Financy"></a><p>Gestão financeira simples para pequenos comércios e micro-empresas.</p></div><nav class="footer-links" aria-label="Navegação do rodapé"><a href="index.html">Início</a><a href="precos.html">Preços</a><a href="sobre.html">Sobre</a><a href="avaliacao.html">Avaliação</a><a href="contato.html">Contato</a></nav></div><div class="footer-bottom"><span>© <span data-current-year></span> Clean-Financy. Todos os direitos reservados.</span></div></div></footer>
+  <footer class="site-footer"><div class="container"><div class="footer-main"><div class="footer-brand"><a class="brand" href="#inicio"><img src="assets/logo.svg" alt="Clean-Financy"></a><p>Gestão financeira simples para pequenos comércios e micro-empresas.</p></div><nav class="footer-links" aria-label="Navegação do rodapé"><a href="#inicio">Início</a><a href="#precos">Preços</a><a href="#sobre">Sobre</a><a href="#avaliacao">Avaliação</a><a href="#contato">Contato</a></nav></div><div class="footer-bottom"><span>© <span data-current-year></span> Clean-Financy. Todos os direitos reservados.</span></div></div></footer>
 </body>
 </html>

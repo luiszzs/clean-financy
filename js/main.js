@@ -12,6 +12,15 @@
   const menuButton = document.querySelector(".menu-toggle");
   const navigation = document.querySelector(".site-nav");
   if (menuButton && navigation) {
+    const updateCurrentNavigation = () => {
+      const currentHash = window.location.hash || "#inicio";
+      navigation.querySelectorAll("a[href^='#']").forEach((link) => {
+        if (link.classList.contains("button")) return;
+        if (link.getAttribute("href") === currentHash) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
     const closeMenu = () => {
       menuButton.setAttribute("aria-expanded", "false");
       navigation.classList.remove("is-open");
@@ -28,6 +37,10 @@
     navigation.addEventListener("click", (event) => {
       if (event.target.closest("a")) closeMenu();
     });
+    navigation.addEventListener("click", (event) => {
+      if (event.target.closest("a[href^='#']")) updateCurrentNavigation();
+    });
+    window.addEventListener("hashchange", updateCurrentNavigation);
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") closeMenu();
@@ -36,6 +49,7 @@
     window.addEventListener("resize", () => {
       if (window.matchMedia("(min-width: 721px)").matches) closeMenu();
     });
+    updateCurrentNavigation();
   }
 
   const contactDetails = {
