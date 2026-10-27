@@ -4,7 +4,7 @@
   const metrics = {
     nps(promoters, neutrals, detractors) {
       const total = promoters + neutrals + detractors;
-      return total === 0 ? null : ((promoters - detractors) / total) * 100;
+      return total === 0 ? null : Math.round(((promoters - detractors) / total) * 100);
     },
     ratio(part, total) {
       return total === 0 ? null : (part / total) * 100;
@@ -33,7 +33,7 @@
       return {
         version: state.version,
         counts: { ...state.counts, acquisition: state.counts.acquisition + 1 },
-        journey: { activation: false, retention: false, revenue: false, recommendation: false },
+        journey: { activation: false, retention: false, revenue: false, recommendation: false, promoterCounted: false },
         ratings: { ...state.ratings },
         dailyAcquisition
       };
@@ -77,14 +77,17 @@
       if (!state.journey.revenue) {
         throw new Error("Conclua as etapas anteriores antes de avaliar.");
       }
-      if (state.journey.recommendation) return state;
       const group = score >= 9 ? "promoters" : score >= 7 ? "neutrals" : "detractors";
       const next = metrics.advanceFunnel(state, "recommendation", { allowRecommendation: true });
       return {
         ...next,
         counts: {
           ...next.counts,
-          recommendation: state.counts.recommendation + (group === "promoters" ? 1 : 0)
+          recommendation: state.counts.recommendation + (group === "promoters" && !state.journey.promoterCounted ? 1 : 0)
+        },
+        journey: {
+          ...next.journey,
+          promoterCounted: state.journey.promoterCounted || group === "promoters"
         },
         ratings: {
           ...state.ratings,
@@ -104,9 +107,10 @@
       ];
     },
     largestFunnelDrop(rates) {
-      if (rates.some((rate) => rate.value === null)) return [];
-      const lowest = Math.min(...rates.map((rate) => rate.value));
-      return rates.filter((rate) => Math.abs(rate.value - lowest) < 1e-9);
+      const availableRates = rates.filter((rate) => rate.value !== null);
+      if (!availableRates.length) return [];
+      const lowest = Math.min(...availableRates.map((rate) => rate.value));
+      return availableRates.filter((rate) => Math.abs(rate.value - lowest) < 1e-9);
     },
     weakestFunnel(activation, retention, revenue) {
       const rates = [
@@ -142,7 +146,7 @@
   const emptyFunnel = () => ({
     version: 3,
     counts: { acquisition: 0, activation: 0, retention: 0, revenue: 0, recommendation: 0 },
-    journey: { activation: false, retention: false, revenue: false, recommendation: false },
+    journey: { activation: false, retention: false, revenue: false, recommendation: false, promoterCounted: false },
     ratings: { promoters: 0, neutrals: 0, detractors: 0 },
     dailyAcquisition: {}
   });
@@ -165,6 +169,7 @@
       countKeys.every((key) => Number.isSafeInteger(value.counts[key]) && value.counts[key] >= 0) &&
       value.journey &&
       funnelStages.every((key) => typeof value.journey[key] === "boolean") &&
+      typeof value.journey.promoterCounted === "boolean" &&
       value.ratings &&
       ["promoters", "neutrals", "detractors"].every((key) => Number.isSafeInteger(value.ratings[key]) && value.ratings[key] >= 0) &&
       value.counts.recommendation <= value.ratings.promoters &&
@@ -180,7 +185,7 @@
       return {
         version: 3,
         counts: { ...value.counts },
-        journey: { ...value.journey },
+        journey: { ...value.journey, promoterCounted: value.journey.promoterCounted === true },
         ratings: value.ratings || {
           promoters: value.counts.recommendation,
           neutrals: 0,
@@ -189,8 +194,16 @@
         dailyAcquisition: {}
       };
     }
-    if (value.version === 3 && !value.dailyAcquisition) {
-      return { ...value, dailyAcquisition: {} };
+    if (value.version === 3 && (
+      !value.dailyAcquisition ||
+      !value.journey ||
+      typeof value.journey.promoterCounted !== "boolean"
+    )) {
+      return {
+        ...value,
+        journey: { ...value.journey, promoterCounted: value.journey && value.journey.promoterCounted === true },
+        dailyAcquisition: value.dailyAcquisition || {}
+      };
     }
     return value;
   }
@@ -247,7 +260,7 @@
     const dropSummary = form.querySelector("[data-usage-drop]");
     if (!largestDrop.length) {
       if (dropSummary) {
-        dropSummary.textContent = "A maior queda será destacada quando todas as etapas tiverem dados.";
+        dropSummary.textContent = "A maior queda será destacada quando houver conversões para comparar.";
         dropSummary.classList.remove("is-largest-drop");
       }
     } else {
@@ -274,7 +287,12 @@
     };
     funnelStages.forEach((stage) => {
       const button = form.querySelector(`[data-usage-action="${stage}"]`);
-      if (button) button.disabled = !prerequisites[stage] || usageFunnel.journey[stage];
+      if (button) {
+        button.disabled = !prerequisites[stage] || (stage !== "recommendation" && usageFunnel.journey[stage]);
+        if (stage === "recommendation") {
+          button.textContent = usageFunnel.journey.recommendation ? "Registrar outra nota NPS" : "Registrar nota NPS";
+        }
+      }
     });
     updateAll();
   }
@@ -303,11 +321,13 @@
       const stage = button.dataset.usageAction;
       if (stage === "recommendation") {
         const scoreInput = form.querySelector("#usage-nps");
-        const score = Number(scoreInput.value);
         if (!scoreInput.value) {
+          scoreInput.setAttribute("aria-invalid", "true");
           showFunnelStatus("Escolha uma nota de 0 a 10 para continuar.", true);
+          scoreInput.focus();
           return;
         }
+        scoreInput.removeAttribute("aria-invalid");
       }
       try {
         const score = stage === "recommendation" ? Number(form.querySelector("#usage-nps").value) : null;
@@ -318,16 +338,25 @@
         if (saveFunnel(nextState)) {
           renderUsageFunnel();
           showFunnelStatus(stage === "recommendation"
-            ? score >= 9
-              ? "Nota registrada. Ela entrou no NPS e na contagem de recomendação."
-              : "Nota registrada no NPS. A recomendação conta somente notas 9 ou 10."
+            ? "Resposta NPS registrada. Você pode avaliar novamente; novas notas contam como novas respostas."
             : `Etapa de ${funnelStageNames[stage]} registrada.`);
         }
       } catch (error) {
         showFunnelStatus(`Não foi possível registrar a etapa: ${error.message}`, true);
       }
     });
+
   });
+
+  const npsInput = form.querySelector("#usage-nps");
+  if (npsInput) {
+    npsInput.addEventListener("change", () => {
+      if (npsInput.value) {
+        npsInput.removeAttribute("aria-invalid");
+        if (funnelStatus && funnelStatus.classList.contains("is-error")) showFunnelStatus("");
+      }
+    });
+  }
 
   initializeUsageFunnel();
 
@@ -467,31 +496,14 @@
     input.addEventListener("change", updateAll);
   });
 
-  function reportValue(input) {
-    if (input.type === "number" && input.value !== "") {
-      return input.dataset.kind === "count"
-        ? numberFormat.format(Number(input.value))
-        : numberFormat.format(Number(input.value));
-    }
-    return input.value.trim() || "Não informado";
-  }
-
   function buildReport() {
     const lines = [
       "CLEAN-FINANCY — AVALIAÇÃO",
       `Período avaliado: ${readText("period") || "Não informado"}`,
-      "Aviso: valores da avaliação informados manualmente. As notas NPS e etapas do funil são respostas agregadas salvas localmente.",
+      "Aviso: as notas NPS e etapas do funil são respostas agregadas salvas localmente neste navegador.",
       "",
-      "VALORES INFORMADOS"
+      "RESULTADOS CALCULADOS"
     ];
-
-    const fields = [...form.querySelectorAll("[data-field]")];
-    fields.forEach((input) => {
-      if (input.dataset.field === "period") return;
-      lines.push(`${input.dataset.label || input.id}: ${reportValue(input)}`);
-    });
-
-    lines.push("", "RESULTADOS CALCULADOS");
     form.querySelectorAll("[data-result]").forEach((result) => {
       const value = result.textContent.trim();
       const label = result.parentElement.querySelector(":scope > span");
@@ -523,14 +535,6 @@
       }
     }
 
-    lines.push(
-      "",
-      "DOS NÚMEROS À DECISÃO",
-      `Problema e evidência: ${readText("decisionProblem") || "Não informado"}`,
-      `Ação e o que fica para depois: ${readText("decisionAction") || "Não informado"}`,
-      `Responsável: ${readText("decisionOwner") || "Não informado"}`,
-      `Data de revisão: ${readText("reviewDate") || "Não informado"}`
-    );
     return lines.join("\r\n");
   }
 

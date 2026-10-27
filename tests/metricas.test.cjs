@@ -14,6 +14,11 @@ test("NPS varia de -100 a 100 e não calcula com total zero", () => {
   assert.equal(metrics.nps(0, 0, 0), null);
 });
 
+test("arredonda o NPS para um número inteiro", () => {
+  assert.equal(metrics.nps(2, 1, 0), 67);
+  assert.equal(metrics.nps(0, 1, 2), -67);
+});
+
 test("calcula retenção", () => {
   assert.ok(Math.abs(metrics.ratio(38, 120) - 31.6666666667) < 1e-8);
 });
@@ -59,7 +64,7 @@ test("registra uma nova aquisição sem apagar os totais anteriores", () => {
   const state = {
     version: 3,
     counts: { acquisition: 3, activation: 2, retention: 1, revenue: 1, recommendation: 0 },
-    journey: { activation: true, retention: true, revenue: true, recommendation: false },
+    journey: { activation: true, retention: true, revenue: true, recommendation: false, promoterCounted: false },
     ratings: { promoters: 0, neutrals: 0, detractors: 0 },
     dailyAcquisition: { "2026-10-26": 2 }
   };
@@ -67,7 +72,7 @@ test("registra uma nova aquisição sem apagar os totais anteriores", () => {
   assert.equal(next.counts.acquisition, 4);
   assert.equal(next.dailyAcquisition["2026-10-26"], 3);
   assert.equal(next.counts.activation, 2);
-  assert.deepEqual(next.journey, { activation: false, retention: false, revenue: false, recommendation: false });
+  assert.deepEqual(next.journey, { activation: false, retention: false, revenue: false, recommendation: false, promoterCounted: false });
   assert.equal(state.counts.acquisition, 3);
 });
 
@@ -75,7 +80,7 @@ test("avança o funil uma vez por etapa e exige a ordem AARRR", () => {
   const initial = {
     version: 3,
     counts: { acquisition: 1, activation: 0, retention: 0, revenue: 0, recommendation: 0 },
-    journey: { activation: false, retention: false, revenue: false, recommendation: false },
+    journey: { activation: false, retention: false, revenue: false, recommendation: false, promoterCounted: false },
     ratings: { promoters: 0, neutrals: 0, detractors: 0 },
     dailyAcquisition: {}
   };
@@ -94,7 +99,7 @@ test("a nota NPS é classificada automaticamente e só promotores recomendam", (
   const base = {
     version: 3,
     counts: { acquisition: 3, activation: 3, retention: 3, revenue: 3, recommendation: 0 },
-    journey: { activation: true, retention: true, revenue: true, recommendation: false },
+    journey: { activation: true, retention: true, revenue: true, recommendation: false, promoterCounted: false },
     ratings: { promoters: 0, neutrals: 0, detractors: 0 },
     dailyAcquisition: {}
   };
@@ -107,6 +112,13 @@ test("a nota NPS é classificada automaticamente e só promotores recomendam", (
   assert.equal(neutral.counts.recommendation, 0);
   assert.deepEqual(promoter.ratings, { promoters: 1, neutrals: 0, detractors: 0 });
   assert.equal(promoter.counts.recommendation, 1);
+  const repeatPromoter = metrics.registerFunnelRating(promoter, 10);
+  assert.equal(repeatPromoter.ratings.promoters, 2);
+  assert.equal(repeatPromoter.counts.recommendation, 1);
+  const promoterAfterDetractor = metrics.registerFunnelRating(detractor, 9);
+  assert.equal(promoterAfterDetractor.ratings.detractors, 1);
+  assert.equal(promoterAfterDetractor.ratings.promoters, 1);
+  assert.equal(promoterAfterDetractor.counts.recommendation, 1);
   assert.equal(metrics.npsFromRatings({ promoters: 2, neutrals: 1, detractors: 1 }), 25);
   assert.throws(() => metrics.registerFunnelRating(base, 11), /inteiro de 0 a 10/);
 });
@@ -116,5 +128,9 @@ test("converte as etapas AARRR e identifica empate na maior queda", () => {
   assert.deepEqual(rates.map((rate) => rate.value), [50, 20, 20, 0]);
   assert.deepEqual(metrics.largestFunnelDrop(rates).map((rate) => rate.name), ["Receita → Recomendação"]);
   const incomplete = metrics.funnelRates({ acquisition: 1, activation: 0, retention: 0, revenue: 0, recommendation: 0 });
-  assert.deepEqual(metrics.largestFunnelDrop(incomplete), []);
+  assert.deepEqual(metrics.largestFunnelDrop(incomplete).map((rate) => rate.name), ["Aquisição → Ativação"]);
+  assert.deepEqual(metrics.largestFunnelDrop([
+    { name: "Sem denominador", value: null },
+    { name: "Sem conversão calculável", value: null }
+  ]), []);
 });

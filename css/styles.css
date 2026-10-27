@@ -226,14 +226,8 @@ p { color: var(--color-muted); }
 .funnel-insight > strong { font-size: 1rem; }
 .small-note { margin: .7rem 0 0; font-size: .78rem; }
 .quality-warning { margin: 1rem 0 0; padding: .85rem; border-left: 3px solid var(--color-blue); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; background: var(--color-blue-soft); color: #355e7a; font-size: .84rem; }
-.decision-card { margin-top: 1.5rem; padding: clamp(1.3rem, 3vw, 2rem); border: 1px solid var(--color-line); border-radius: var(--radius-md); background: white; box-shadow: var(--shadow-card); }
-.decision-heading { max-width: 660px; }
-.decision-heading .eyebrow { margin-bottom: .55rem; }
-.decision-heading h2 { margin-bottom: .5rem; font-size: 1.7rem; }
-.decision-heading p { font-size: .9rem; }
-.decision-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; }
-.decision-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.1rem; }
-.decision-footer p { margin: 0; font-size: .78rem; }
+.evaluation-export { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; }
+.evaluation-export p { margin: 0; font-size: .82rem; }
 .download-status { min-height: 1.25rem; margin: .6rem 0 0; color: var(--color-green-dark); font-size: .82rem; }
 .usage-funnel { margin: 1.2rem 0 1.35rem; }
 .usage-funnel .metric-heading { margin-bottom: .75rem; }
@@ -259,6 +253,8 @@ p { color: var(--color-muted); }
 .usage-rating { display: flex; flex-wrap: wrap; align-items: end; gap: .45rem; }
 .usage-rating label { flex-basis: 100%; color: var(--color-ink); font-size: .79rem; font-weight: 700; }
 .usage-rating select { min-height: 42px; padding: .45rem .7rem; border: 1px solid #cbd9d0; border-radius: var(--radius-sm); background: white; color: var(--color-ink); }
+.usage-rating select[aria-invalid="true"] { border-color: #b94545; }
+.usage-rating-note { margin: .55rem 0 0; color: var(--color-muted); font-size: .78rem; }
 .usage-status { min-height: 1.3rem; margin: .65rem 0 0; color: var(--color-green-dark); font-size: .82rem; }
 .usage-status.is-error { color: #a52924; }
 
@@ -316,8 +312,8 @@ p { color: var(--color-muted); }
   .funnel-results { grid-template-columns: 1fr; gap: 0; }
   .funnel-results .metric-result { margin-top: .55rem; }
   .decision-fields { grid-template-columns: 1fr; }
-  .decision-footer { align-items: stretch; flex-direction: column; }
-  .decision-footer .button { width: 100%; }
+  .evaluation-export { align-items: stretch; flex-direction: column; }
+  .evaluation-export .button { width: 100%; }
 }
 @media (max-width: 420px) {
   h1 { font-size: 2.35rem; }

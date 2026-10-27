@@ -112,12 +112,13 @@
           <div class="usage-conversion" data-usage-conversion="revenue"><span>Retenção → Receita</span><strong data-usage-rate="revenue">—</strong></div>
           <div class="usage-conversion" data-usage-conversion="recommendation"><span>Receita → Recomendação</span><strong data-usage-rate="recommendation">—</strong></div>
         </div>
-        <p class="usage-drop" data-usage-drop aria-live="polite">A maior queda será destacada quando todas as etapas tiverem dados.</p>
+        <p class="usage-drop" data-usage-drop aria-live="polite">A maior queda será destacada quando houver conversões para comparar.</p>
         <div class="usage-actions">
           <button class="button" type="button" data-usage-action="activation">Experimentar</button>
           <button class="button" type="button" data-usage-action="retention" disabled>Quero usar de novo</button>
           <button class="button" type="button" data-usage-action="revenue" disabled>Eu pagaria por isso</button>
-          <div class="usage-rating"><label for="usage-nps">Recomendaria a Clean-Financy? Dê uma nota de 0 a 10</label><select id="usage-nps" aria-label="Nota de recomendação de 0 a 10"><option value="">Selecione</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select><button class="button button-secondary" type="button" data-usage-action="recommendation" disabled>Registrar nota NPS</button></div>
+          <div class="usage-rating"><label for="usage-nps">De 0 a 10, quanto você recomendaria este app para um amigo?</label><select id="usage-nps" aria-label="Nota de recomendação de 0 a 10" required><option value="">Selecione</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select><button class="button button-secondary" type="button" data-usage-action="recommendation" disabled>Registrar nota NPS</button></div>
+          <p class="usage-rating-note">Uma nota é obrigatória para enviar. Você pode responder novamente; cada envio conta como uma nova resposta NPS.</p>
         </div>
         <p class="usage-status" data-usage-status role="status" aria-live="polite"></p>
       </section>
@@ -140,7 +141,8 @@
           <div class="metric-result"><span>Receita → Recomendação</span><strong data-quality-rate="recommendation">—</strong><p><span data-quality-count="recommendation">0</span> promotores em <span data-quality-count="revenue">0</span> intenções</p></div>
         </div><p class="quality-warning">Essas conversões indicam atrito na jornada. Não representam medições de desempenho técnico, bugs ou qualidade de código.</p></section>
       </div></div>
-      <section class="decision-card" aria-labelledby="decision-title"><div class="decision-heading"><span class="eyebrow">Bloco final</span><h2 id="decision-title">Dos números à decisão</h2><p>Primeiro os dados, depois a opinião. Escolha um problema e combine quando reavaliar.</p></div><div class="decision-fields"><div class="field"><label for="decisionProblem">Problema e evidência</label><textarea id="decisionProblem" data-field="decisionProblem" data-label="Problema e evidência" rows="3"></textarea></div><div class="field"><label for="decisionAction">Ação e o que fica para depois</label><textarea id="decisionAction" data-field="decisionAction" data-label="Ação e o que fica para depois" rows="3"></textarea></div><div class="field"><label for="decisionOwner">Responsável</label><input id="decisionOwner" data-field="decisionOwner" data-label="Responsável" type="text"></div><div class="field"><label for="reviewDate">Data de revisão</label><input id="reviewDate" data-field="reviewDate" data-label="Data de revisão" type="date"></div></div><div class="decision-footer"><p>O arquivo é gerado no seu dispositivo; os dados não são enviados a um servidor.</p><button class="button" type="button" id="download-evaluation">Baixar avaliação</button></div><p class="download-status" id="download-status" aria-live="polite"></p></section>
+      <div class="evaluation-export"><p>Baixe os resultados calculados em um arquivo no seu dispositivo. Os dados não são enviados a um servidor.</p><button class="button" type="button" id="download-evaluation">Baixar avaliação</button></div>
+      <p class="download-status" id="download-status" aria-live="polite"></p>
     </div></section>
 
     <section class="page-hero section-space" id="contato"><div class="container narrow center"><span class="eyebrow">Estamos por aqui</span><h2>Vamos conversar?</h2><p class="lead">Escolha o canal que preferir. Os contatos oficiais serão publicados assim que estiverem disponíveis.</p></div></section>
