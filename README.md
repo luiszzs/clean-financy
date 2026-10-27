@@ -207,38 +207,49 @@ A Clean-Financy é um sistema de gestão financeira voltado para pequenos comér
 ### Métricas acompanhadas
 
 | **Categoria** | **Indicadores** |
-|---|---|
+| ------------- | ----------------------------------- |
 | Produto | Taxa de ativação, retenção e NPS |
+| Produto | Intenção de pagamento e recomendação |
 | Código | Commits realizados e bugs em aberto |
 
 Cada indicador apresenta seu valor atual, o período analisado, a interpretação do resultado e uma ação definida pela equipe para responder a uma possível piora.
 
 ### Teste com usuários
 
-A Clean-Financy foi testada por **5 pessoas**, que avaliaram a experiência de uso e responderam à pergunta de recomendação do produto.
+A Clean-Financy foi testada inicialmente por **5 pessoas**, que avaliaram a experiência de uso e responderam à pergunta de recomendação do produto. Posteriormente, foram avaliados **10 visitantes**, considerando o retorno ao sistema, a intenção de pagamento e a intenção de recomendação.
 
 Os resultados foram:
 
 | **Indicador** | **Resultado** |
-|---|---:|
-| Pessoas participantes | 5 |
-| Usuários ativos | 3 |
-| Usuários inativos | 2 |
-| Taxa de ativação | 60% |
-| Taxa de inatividade no teste | 40% |
-| Média das avaliações | 6,8 |
-| NPS | -20 |
+| ---------------------------- | ------------- |
+| Visitantes avaliados | 10 |
+| Visitantes que voltaram | 4 |
+| Visitantes que não voltaram | 6 |
+| Taxa de retenção observada | 40% |
+| Taxa de não retorno observada | 60% |
+| Pessoas que pagariam | 3 |
+| Intenção de pagamento | 30% |
+| Pessoas que recomendariam | 3 |
+| Intenção de recomendação | 30% |
+| Taxa de ativação dos 10 visitantes | Pendente de avaliação |
+| Receita real | Pendente de avaliação |
+| Commits realizados | Pendente de consulta ao GitHub |
+| Bugs em aberto | Pendente de consulta às issues |
 
-Os resultados mostram que 3 das 5 pessoas conseguiram utilizar o sistema, enquanto 2 não chegaram à condição definida como ativação. Isso indica uma oportunidade de melhorar o primeiro acesso e facilitar a compreensão das funcionalidades.
+Os resultados mostram que 4 dos 10 visitantes voltaram a utilizar o sistema, enquanto 6 não retornaram durante o período observado. Além disso, 3 visitantes disseram que pagariam pelo produto e 3 afirmaram que o recomendariam para amigos.
+
+Esses resultados indicam que existe interesse no sistema, mas também uma oportunidade de melhorar a experiência dos usuários e investigar os motivos pelos quais parte dos visitantes não retorna.
 
 ### Cálculos e análise
 
 O painel acompanha os seguintes indicadores:
 
 - **Taxa de ativação:** percentual de participantes que realizaram a ação definida como ativação, como concluir o acesso e registrar a primeira movimentação financeira.
-- **Retenção:** percentual dos usuários de uma mesma coorte que voltam a utilizar o sistema após o primeiro acesso. Esse indicador deverá ser acompanhado ao longo do tempo.
-- **Churn:** percentual dos usuários de uma mesma coorte que deixam de retornar durante o período de acompanhamento. Para calculá-lo, é necessário acompanhar o retorno dos usuários.
+- **Retenção:** percentual dos usuários de uma mesma coorte que voltam a utilizar o sistema após o primeiro acesso.
+- **Churn:** percentual dos usuários de uma mesma coorte que deixam de utilizar o sistema durante o período de acompanhamento.
 - **NPS (Net Promoter Score):** indicador de satisfação e disposição dos usuários para recomendar a Clean-Financy.
+- **Intenção de pagamento:** percentual de visitantes que demonstraram interesse em pagar pelo sistema.
+- **Intenção de recomendação:** percentual de visitantes que afirmaram que recomendariam a Clean-Financy para outras pessoas.
 - **Commits:** registros das alterações realizadas no código do projeto, consultados no histórico do repositório.
 - **Bugs em aberto:** erros identificados que ainda precisam ser corrigidos, especialmente aqueles que possam prejudicar o cadastro, o acesso e o registro de movimentações financeiras.
 - **Funil AARRR:** análise das etapas de aquisição, ativação, retenção, receita e recomendação para identificar em qual etapa os usuários apresentam maior dificuldade.
@@ -247,28 +258,50 @@ O painel acompanha os seguintes indicadores:
 
 A taxa de ativação é calculada dividindo o número de usuários ativos pelo total de participantes e multiplicando o resultado por 100.
 
+No teste inicial, 3 das 5 pessoas foram consideradas ativas.
+
 **Cálculo:**
 
 Taxa de ativação = (3 ÷ 5) × 100 = **60%**
 
-Portanto, 60% dos participantes foram ativados durante o teste. Os outros 40% não chegaram à etapa de ativação definida pela equipe.
+Portanto, 60% dos participantes foram ativados durante o teste inicial. Os outros 40% não chegaram à etapa de ativação definida pela equipe.
+
+**Situação atual:** a taxa de ativação dos 10 visitantes ainda precisa ser avaliada. É necessário identificar quantos deles realizaram a primeira ação importante no sistema.
 
 **Ação em caso de piora:** revisar os campos de cadastro, simplificar as etapas iniciais e melhorar as orientações para o primeiro registro financeiro.
 
 #### Retenção e churn
 
-A retenção e o churn precisam ser avaliados após um período de acompanhamento dos mesmos usuários. A classificação de três pessoas como ativas e duas como inativas no teste não é suficiente, por si só, para determinar a retenção ou o churn ao longo do tempo.
+A retenção dos 10 visitantes foi calculada considerando quantos voltaram a utilizar o sistema.
+
+**Cálculo da retenção:**
+
+Retenção = (visitantes que voltaram ÷ total de visitantes) × 100
+
+Retenção = (4 ÷ 10) × 100 = **40%**
+
+A taxa de retenção observada foi de 40%.
+
+**Cálculo do não retorno:**
+
+Não retorno = (visitantes que não voltaram ÷ total de visitantes) × 100
+
+Não retorno = (6 ÷ 10) × 100 = **60%**
+
+Os resultados mostram que 60% dos visitantes não voltaram durante o período observado.
+
+**Churn: pendente de avaliação.** Para calcular o churn, será necessário definir um período de acompanhamento e verificar quais usuários deixaram de utilizar o sistema nesse período. A ausência de retorno em uma observação isolada não confirma, por si só, o abandono definitivo do produto.
 
 **Ação em caso de piora:** investigar as dificuldades de uso, verificar se os usuários conseguem registrar entradas e saídas e avaliar se o painel financeiro atende às necessidades dos comerciantes.
 
 #### NPS
 
-As cinco avaliações, na ordem em que foram recebidas, foram: **8, 7, 5, 9 e 5**.
+As cinco avaliações do teste inicial, na ordem em que foram recebidas, foram: **8, 7, 5, 9 e 5**.
 
 Para calcular o NPS, as respostas são classificadas em três grupos:
 
 | **Classificação** | **Notas** | **Quantidade** |
-|---|---|---:|
+| ----------------- | --------- | -------------- |
 | Promotores | 9 e 10 | 1 |
 | Neutros | 7 e 8 | 2 |
 | Detratores | 0 a 6 | 2 |
@@ -279,19 +312,63 @@ Para calcular o NPS, as respostas são classificadas em três grupos:
 - Percentual de detratores: (2 ÷ 5) × 100 = 40%.
 - NPS: 20% − 40% = **-20**.
 
-O resultado de -20 indica que, nesse grupo de teste, o percentual de detratores foi maior que o de promotores. A equipe deverá investigar os motivos das avaliações mais baixas e identificar quais melhorias podem aumentar a satisfação dos usuários.
+O resultado de -20 indica que, no teste inicial, o percentual de detratores foi maior que o de promotores.
+
+**Situação atual:** o NPS atualizado dos 10 visitantes está pendente de avaliação. É necessário coletar ou confirmar as notas de 0 a 10 desse grupo. A informação de que 3 pessoas recomendariam o produto não é suficiente para calcular o NPS, pois é necessário conhecer as notas individuais.
 
 **Ação em caso de piora:** analisar os comentários dos participantes, identificar dificuldades no cadastro e no uso das funcionalidades e realizar novos testes após as melhorias.
+
+#### Intenção de pagamento
+
+A intenção de pagamento representa o percentual de visitantes que afirmaram que pagariam para utilizar a Clean-Financy.
+
+**Cálculo:**
+
+Intenção de pagamento = (pessoas que pagariam ÷ total de visitantes) × 100
+
+Intenção de pagamento = (3 ÷ 10) × 100 = **30%**
+
+O resultado indica que 30% dos visitantes demonstraram interesse em pagar pelo sistema.
+
+A Clean-Financy possui o Plano Pro no valor de R$ 19,90 por mês. Caso os três visitantes contratassem esse plano, a receita mensal bruta potencial seria de R$ 59,70. Esse valor é apenas uma simulação, pois ainda não há confirmação de pagamentos realizados.
+
+**Receita real: pendente de avaliação.** A equipe deverá verificar se houve contratação de planos pagos e registrar os valores efetivamente recebidos.
+
+**Ação em caso de piora:** conversar com os visitantes para entender se o preço, os recursos oferecidos ou a falta de confiança estão dificultando a contratação.
+
+#### Intenção de recomendação
+
+A intenção de recomendação representa o percentual de visitantes que afirmaram que recomendariam a Clean-Financy para amigos.
+
+**Cálculo:**
+
+Intenção de recomendação = (pessoas que recomendariam ÷ total de visitantes) × 100
+
+Intenção de recomendação = (3 ÷ 10) × 100 = **30%**
+
+O resultado indica que 30% dos visitantes demonstraram disposição para recomendar o sistema.
+
+Essa métrica é diferente do NPS, pois não apresenta a distribuição das notas de 0 a 10.
+
+**Ação em caso de piora:** analisar os feedbacks recebidos, identificar dificuldades de utilização e priorizar melhorias que aumentem a satisfação e a confiança dos usuários.
 
 #### Commits realizados
 
 Os commits permitem acompanhar as alterações registradas no código ao longo do desenvolvimento. A quantidade de commits e o período analisado devem ser consultados no histórico real do repositório Git.
+
+**Valor atual: pendente de avaliação.**
+
+A equipe deverá consultar o GitHub e registrar a quantidade de commits realizados durante o período escolhido.
 
 **Ação em caso de piora:** verificar se existem tarefas bloqueadas, dificuldades técnicas ou problemas na distribuição das atividades. A quantidade de commits não deve ser utilizada isoladamente para medir produtividade ou qualidade.
 
 #### Bugs em aberto
 
 Os bugs em aberto representam os erros identificados que ainda não foram corrigidos. A quantidade atual deve ser consultada nas issues ou no sistema de acompanhamento utilizado pela equipe.
+
+**Valor atual: pendente de avaliação.**
+
+A equipe deverá consultar as issues do GitHub, identificar os problemas ainda abertos e classificá-los conforme a gravidade.
 
 **Ação em caso de piora:** priorizar os erros pela gravidade, dando atenção especial aos problemas que impeçam o cadastro, o acesso à plataforma, o registro de entradas e saídas ou a visualização do saldo.
 
@@ -302,35 +379,47 @@ Os valores de commits e bugs devem ser atualizados a partir do repositório e do
 O funil AARRR permite analisar o caminho percorrido pelo usuário, desde o primeiro contato com a Clean-Financy até a utilização contínua e a recomendação do sistema.
 
 | **Etapa** | **O que será acompanhado** |
-|---|---|
-| Aquisição | Pessoas que acessam a loja virtual da Clean-Financy |
+| ------------ | ------------------------------------------------------------------------------ |
+| Aquisição | Pessoas que acessam a Clean-Financy |
 | Ativação | Pessoas que começam a utilizar o sistema e realizam a primeira ação importante |
 | Retenção | Usuários que retornam para utilizar a plataforma |
 | Receita | Usuários que contratam um plano pago, como o Plano Pro de R$ 19,90 por mês |
 | Recomendação | Usuários que demonstram disposição para recomendar a Clean-Financy |
 
-No teste realizado, 3 de 5 participantes foram ativados e 2 não chegaram à ativação. A taxa de ativação foi de 60%, enquanto a taxa de inatividade observada no teste foi de 40%.
+Os resultados disponíveis para os 10 visitantes são:
 
-O resultado indica que o primeiro acesso merece atenção. Para compreender melhor as demais etapas do funil, será necessário acompanhar o retorno dos usuários, a contratação de planos e a disposição para recomendar o produto.
+| **Etapa** | **Resultado** |
+|---|---|
+| Aquisição | 10 visitantes |
+| Ativação | Pendente de avaliação para esse grupo |
+| Retenção | 4 visitantes retornaram (40%) |
+| Receita | 3 visitantes demonstraram intenção de pagar (30%); pagamentos reais pendentes |
+| Recomendação | 3 visitantes afirmaram que recomendariam (30%) |
+
+A maior dificuldade observada até o momento está no retorno dos visitantes: 6 dos 10 não voltaram, representando 60% do grupo.
+
+Ainda não é possível afirmar qual é a maior queda de todo o funil, pois a ativação dos 10 visitantes e a receita real precisam ser avaliadas.
+
+**Ação em caso de piora:** investigar os motivos pelos quais os visitantes não retornam, melhorar a experiência inicial e acompanhar os resultados em uma nova rodada de testes.
 
 ### Decisão coletiva
 
-Com base nos resultados do teste, a equipe definiu como ação prioritária **simplificar o cadastro e melhorar as orientações do primeiro acesso à Clean-Financy**.
+Com base nos resultados disponíveis, a equipe propõe como ação prioritária **simplificar o cadastro, melhorar as orientações do primeiro acesso e investigar os motivos pelos quais os visitantes não retornam à Clean-Financy**.
 
-A decisão considera que 2 dos 5 participantes não foram ativados e que o NPS calculado foi de -20. Esses resultados indicam a necessidade de investigar as dificuldades encontradas durante a experiência de uso.
+A decisão considera que 6 dos 10 visitantes não voltaram ao sistema, que 3 demonstraram intenção de pagar e que 3 afirmaram que recomendariam o produto. O teste inicial também apresentou uma taxa de ativação de 60% e um NPS de -20.
 
-A equipe priorizará a revisão dos campos de cadastro e das orientações apresentadas no primeiro acesso. O objetivo é facilitar a entrada de novos usuários e ajudar os comerciantes a registrar suas primeiras movimentações financeiras.
+A equipe priorizará a revisão dos campos de cadastro e das orientações apresentadas no primeiro acesso. Também deverá conversar com os visitantes que não retornaram para identificar possíveis dificuldades e realizar novos testes após as melhorias.
 
 A decisão está alinhada à proposta de valor da Clean-Financy: oferecer uma ferramenta simples, prática e fácil de aprender, especialmente para comerciantes que não possuem conhecimento técnico ou muito tempo para administrar as finanças do negócio.
 
 Caso sejam identificados bugs críticos que impeçam o acesso ou o registro financeiro, sua correção deverá receber prioridade.
 
-O registro formal da decisão, incluindo a justificativa, o responsável e a data de revisão, está disponível em [`metricas/decisao.md`](metricas/decisao.md).
+O registro formal da decisão, incluindo a justificativa, o responsável e a data de revisão, está disponível em [`metricas/decisao.md`](https://github.com/luiszzs/clean-financy/blob/main/metricas/decisao.md).
 
 ### Arquivos do projeto
 
-- **[Painel de métricas — `painel.md`](metricas/painel.md):** indicadores de produto e código, cálculos de ativação e NPS, acompanhamento de retenção e churn, funil AARRR e ações de melhoria.
-- **[Decisão coletiva — `decisao.md`](metricas/decisao.md):** registro da decisão da equipe, justificativa baseada nos resultados, responsável e data de revisão.
+- [**Painel de métricas — `painel.md`**](https://github.com/luiszzs/clean-financy/blob/main/metricas/painel.md): indicadores de produto e código, cálculos, acompanhamento de retenção e churn, funil AARRR e ações de melhoria.
+- [**Decisão coletiva — `decisao.md`**](https://github.com/luiszzs/clean-financy/blob/main/metricas/decisao.md): registro da decisão da equipe, justificativa baseada nos resultados, responsável e data de revisão.
 - **Issue da ação prioritária:** acompanhamento das tarefas para simplificar o cadastro e melhorar as orientações do primeiro acesso. O link deverá ser adicionado após a criação da issue no GitHub.
 
 ---
@@ -345,7 +434,7 @@ O registro formal da decisão, incluindo a justificativa, o responsável e a dat
 ## Equipe
 
 | **Integrante** | **Responsabilidade** |
-|---|---|
+| ----------------- | ------------------------ |
 | João Mateus | Coordenador de Mercado |
 | João Paulo | Coordenador de Marketing |
 | Luis Guilherme | Garantia de Qualidade |
@@ -357,7 +446,7 @@ O registro formal da decisão, incluindo a justificativa, o responsável e a dat
 As responsabilidades foram distribuídas para permitir a execução das atividades em paralelo, mantendo a participação coletiva nas decisões e na definição das prioridades do produto.
 
 | **Função** | **Responsabilidade** |
-|---|---|
+| ------------------- | ---------------------------------------------------------------------------------------- |
 | Métricas de produto | Analisar ativação, retenção, churn e NPS, considerando a experiência dos comerciantes. |
 | Métricas de código | Verificar commits, pull requests (PRs), bugs em aberto e evolução do desenvolvimento. |
 | Painel | Organizar os indicadores, os valores, os cálculos e a interpretação dos resultados. |
@@ -372,9 +461,11 @@ A divisão de responsabilidades orienta a execução das tarefas, enquanto as de
 
 **Em desenvolvimento.**
 
-A equipe utiliza os resultados do teste com cinco participantes e o acompanhamento do desenvolvimento para orientar as melhorias da Clean-Financy.
+A equipe utiliza os resultados do teste inicial com cinco participantes e da avaliação posterior com dez visitantes para orientar as melhorias da Clean-Financy.
 
-A prioridade inicial é simplificar o cadastro e melhorar as orientações do primeiro acesso. Após a implementação das mudanças, a equipe deverá realizar novos testes e comparar os resultados para verificar se houve melhora na ativação e na satisfação dos usuários.
+Os dados disponíveis indicam uma retenção observada de 40%, intenção de pagamento de 30% e intenção de recomendação de 30%. A taxa de ativação dos dez visitantes, o NPS atualizado, a receita real, os commits e os bugs em aberto ainda precisam ser avaliados.
+
+A prioridade inicial é simplificar o cadastro, melhorar as orientações do primeiro acesso e investigar os motivos pelos quais os visitantes não retornam. Após a implementação das mudanças, a equipe deverá realizar novos testes e comparar os resultados para verificar se houve melhora na ativação, na retenção e na satisfação dos usuários.
 
 O acompanhamento contínuo das métricas permitirá identificar dificuldades, priorizar correções e evoluir a plataforma de acordo com as necessidades dos pequenos comerciantes.
 
